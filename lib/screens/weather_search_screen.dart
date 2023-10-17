@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:weather/main.dart';
+import 'package:weather/services/weather_services.dart';
+
+
+
 
 class WeatherSearchScreen extends StatelessWidget {
+  
   const WeatherSearchScreen({super.key});
 
   @override
@@ -16,8 +22,12 @@ class WeatherSearchScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: TextField(
-            onChanged: (value) {
+            onSubmitted: (value) async {
               print(value);
+              weatherModel =
+                  await WeatherServices().getCurrentWeather(cityName: value);
+              Navigator.of(context).pop();
+              //log(weatherModel.cityName);
             },
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:weather/components/info_weather_screen.dart';
 import 'package:weather/components/not_found_weather_screen.dart';
+import 'package:weather/main.dart';
 import 'package:weather/screens/weather_search_screen.dart';
 
 class WeatherHomeScreen extends StatelessWidget {
@@ -26,7 +28,7 @@ class WeatherHomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const NotFoundWeatherScreen(),
+      body: weatherModel == null ? const NotFoundWeatherScreen() : const InfoWeatherScreen(),
     );
   }
 }
