@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:weather/models/weather_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather/screens/weather_home_screen.dart';
 
 void main() {
   runApp(const WeatherApp());
 }
-WeatherModel? weatherModel;
 
 class WeatherApp extends StatelessWidget {
   const WeatherApp({Key? key}) : super(key: key);
@@ -18,9 +18,12 @@ class WeatherApp extends StatelessWidget {
         statusBarColor: Colors.transparent,
       ),
     );
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: WeatherHomeScreen(),
+    return BlocProvider(
+      create: (context) => GetWeatherCubit(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: WeatherHomeScreen(),
+      ),
     );
   }
 }

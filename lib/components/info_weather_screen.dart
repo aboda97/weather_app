@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/cubits/get_weather_cubit/get_weather_cubit.dart';
 
 class InfoWeatherScreen extends StatelessWidget {
-  const InfoWeatherScreen({Key? key}) : super(key: key);
-
+  const InfoWeatherScreen({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var weatherCubit = BlocProvider.of<GetWeatherCubit>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'Alexandria',
-            style: TextStyle(
+          Text(
+            weatherCubit.weatherModel!.cityName,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 32,
             ),
           ),
-          const Text(
-            'updated at 23:46',
-            style: TextStyle(
+          Text(
+            'updated at ${weatherCubit.weatherModel?.cityDate.hour} : ${weatherCubit.weatherModel?.cityDate.minute}',
+            style: const TextStyle(
               fontSize: 24,
             ),
           ),
@@ -32,24 +36,24 @@ class InfoWeatherScreen extends StatelessWidget {
               Image.asset(
                 'assets/images/cloudy.png',
               ),
-              const Text(
-                '17',
-                style: TextStyle(
+              Text(
+                'Average Temp ${weatherCubit.weatherModel!.cityAverageTemp}',
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 32,
                 ),
               ),
-              const Column(
+              Column(
                 children: [
                   Text(
-                    'Maxtemp: 24',
-                    style: TextStyle(
+                    'Max Temp ${weatherCubit.weatherModel!.cityMaxTemp}',
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                   ),
                   Text(
-                    'Mintemp: 16',
-                    style: TextStyle(
+                    'Min Temp ${weatherCubit.weatherModel!.cityMinTemp}',
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                   ),
@@ -60,9 +64,9 @@ class InfoWeatherScreen extends StatelessWidget {
           const SizedBox(
             height: 32,
           ),
-          const Text(
-            'Ligh Rain',
-            style: TextStyle(
+          Text(
+            '${weatherCubit.weatherModel!.cityWeatherCondition}',
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 32,
             ),

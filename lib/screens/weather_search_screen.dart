@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:weather/main.dart';
-import 'package:weather/services/weather_services.dart';
-
-
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/cubits/get_weather_cubit/get_weather_cubit.dart';
 
 class WeatherSearchScreen extends StatelessWidget {
-  
   const WeatherSearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -23,11 +20,8 @@ class WeatherSearchScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: TextField(
             onSubmitted: (value) async {
-              print(value);
-              weatherModel =
-                  await WeatherServices().getCurrentWeather(cityName: value);
+              getWeatherCubit.getCurrentWeather(cityName: value);
               Navigator.of(context).pop();
-              //log(weatherModel.cityName);
             },
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(

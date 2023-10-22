@@ -1,6 +1,6 @@
 class WeatherModel {
   final String cityName;
-  final String cityDate;
+  final DateTime cityDate;
   final double cityMinTemp;
   final double cityMaxTemp;
   final double cityAverageTemp;
@@ -21,7 +21,7 @@ class WeatherModel {
     return
      WeatherModel(
       cityName: jsonData['location']['name'] ?? '',
-      cityDate: jsonData['current']['last_updated'] ?? '',
+      cityDate: DateTime.parse(jsonData['current']['last_updated'] ?? '') ,
       cityMinTemp: jsonData['forecast']['forecastday'][0]['day']['mintemp_c'] ?? 0.0,
       cityMaxTemp: jsonData['forecast']['forecastday'][0]['day']['maxtemp_c'] ?? 0.0,
       cityAverageTemp: jsonData['forecast']['forecastday'][0]['day']['avgtemp_c'] ?? 0.0,
