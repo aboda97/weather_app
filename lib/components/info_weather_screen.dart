@@ -65,7 +65,7 @@ class InfoWeatherScreen extends StatelessWidget {
             height: 32,
           ),
           Text(
-            '${weatherCubit.weatherModel!.cityWeatherCondition}',
+            weatherCubit.weatherModel!.cityWeatherCondition,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 32,
