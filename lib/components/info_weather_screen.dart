@@ -19,8 +19,9 @@ class InfoWeatherScreen extends StatelessWidget {
           end: Alignment.bottomLeft,
           colors: [
              getThemeForWeatherApp(weathermodeling.cityWeatherCondition),
-             getThemeForWeatherApp(weathermodeling.cityWeatherCondition)[300]!,
              getThemeForWeatherApp(weathermodeling.cityWeatherCondition)[400]!,
+             getThemeForWeatherApp(weathermodeling.cityWeatherCondition)[300]!,
+             getThemeForWeatherApp(weathermodeling.cityWeatherCondition),
              getThemeForWeatherApp(weathermodeling.cityWeatherCondition)[700]!,
              getThemeForWeatherApp(weathermodeling.cityWeatherCondition)[800]!,
         ])
