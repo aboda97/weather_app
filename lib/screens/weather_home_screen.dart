@@ -35,7 +35,7 @@ class WeatherHomeScreen extends StatelessWidget {
           if (state is WeatherInitState) {
             return const NotFoundWeatherScreen();
           } else if (state is WeatherSuccessState) {
-            return const InfoWeatherScreen( );
+            return  InfoWeatherScreen(weathermodeling: state.weatherModel, );
           } else {
             return const Text('You have an Error');
           }
